@@ -1,0 +1,104 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  background-color: #0d0d0d;
+  background-image: radial-gradient(ellipse at 30% 20%, rgba(249,115,22,0.08) 0%, transparent 50%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  color: #f0f0f0;
+}
+ 
+#calculadora {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 320px;
+}
+ 
+h2 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1.8rem;
+}
+ 
+input[type="number"] {
+  width: 100%;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  color: #f0f0f0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: textfield;
+}
+ 
+input[type="number"]:focus {
+  border-color: #f97316;
+}
+ 
+input[type="number"]::placeholder {
+  color: #3a3a3a;
+}
+ 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+ 
+#botoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.4rem;
+}
+ 
+button {
+  background: #1f1f1f;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  color: #f0f0f0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+ 
+button:hover {
+  background: #f97316;
+  border-color: #f97316;
+  color: #fff;
+}
+ 
+button:active {
+  transform: scale(0.96);
+}
+ 
+#resultado {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  color: #f97316;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+}
