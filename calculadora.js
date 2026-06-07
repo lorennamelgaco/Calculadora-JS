@@ -43,7 +43,7 @@ document.getElementById("dividir").addEventListener("click", function() {
   if (!valores) return;
  
   if (valores.n2 === 0) {
-    resultadoEl.textContent = "⚠️ Não é possível dividir por zero.";
+    resultadoEl.textContent = "Não é possível dividir por zero.";
     return;
   }
  
