@@ -7,7 +7,7 @@ function pegarValores() {
   const n2 = Number(num2El.value);
  
   if (num1El.value === "" || num2El.value === "") {
-    resultadoEl.textContent = "⚠️ Preencha os dois campos.";
+    resultadoEl.textContent = "Preencha os dois campos.";
     return null;
   }
  
