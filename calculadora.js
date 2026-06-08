@@ -1,52 +1,92 @@
-const num1El      = document.getElementById("num1");
-const num2El      = document.getElementById("num2");
+let visor = "0";
+let numeroAnterior = null;
+let operador = null;
+let novoNumero = false;
+ 
 const resultadoEl = document.getElementById("resultado");
-
-function pegarValores() {
-  const n1 = Number(num1El.value);
-  const n2 = Number(num2El.value);
  
-  if (num1El.value === "" || num2El.value === "") {
-    resultadoEl.textContent = "Preencha os dois campos.";
-    return null;
-  }
- 
-  return { n1, n2 };
+function atualizarVisor() {
+  resultadoEl.textContent = visor;
 }
-
-document.getElementById("somar").addEventListener("click", function() {
-  const valores = pegarValores();
-  if (!valores) return;
  
-  const resultado = valores.n1 + valores.n2;
-  resultadoEl.textContent = "Resultado: " + resultado;
+document.querySelectorAll(".btn-num").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    const num = btn.dataset.num;
+ 
+    if (num === "." && visor.includes(".")) return;
+ 
+    if (novoNumero) {
+      visor = num === "." ? "0." : num;
+      novoNumero = false;
+    } else {
+      visor = visor === "0" && num !== "." ? num : visor + num;
+    }
+ 
+    atualizarVisor();
+  });
 });
 
-document.getElementById("subtrair").addEventListener("click", function() {
-  const valores = pegarValores();
-  if (!valores) return;
+document.querySelectorAll(".btn-op").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    const op = btn.dataset.op;
  
-  const resultado = valores.n1 - valores.n2;
-  resultadoEl.textContent = "Resultado: " + resultado;
+    if (op === "+/-") {
+      visor = String(Number(visor) * -1);
+      atualizarVisor();
+      return;
+    }
+ 
+    if (op === "%") {
+      visor = String(Number(visor) / 100);
+      atualizarVisor();
+      return;
+    }
+ 
+    if (numeroAnterior !== null && !novoNumero) {
+      calcular();
+    }
+ 
+    numeroAnterior = Number(visor);
+    operador = op;
+    novoNumero = true;
+  });
 });
 
-ocument.getElementById("multiplicar").addEventListener("click", function() {
-  const valores = pegarValores();
-  if (!valores) return;
- 
-  const resultado = valores.n1 * valores.n2;
-  resultadoEl.textContent = "Resultado: " + resultado;
+document.getElementById("igual").addEventListener("click", function() {
+  calcular();
+  operador = null;
+  numeroAnterior = null;
+  novoNumero = true;
 });
 
-document.getElementById("dividir").addEventListener("click", function() {
-  const valores = pegarValores();
-  if (!valores) return;
+document.getElementById("limpar").addEventListener("click", function() {
+  visor = "0";
+  numeroAnterior = null;
+  operador = null;
+  novoNumero = false;
+  atualizarVisor();
+});
  
-  if (valores.n2 === 0) {
-    resultadoEl.textContent = "Não é possível dividir por zero.";
-    return;
+function calcular() {
+  if (operador === null || numeroAnterior === null) return;
+ 
+  const n1 = numeroAnterior;
+  const n2 = Number(visor);
+  let resultado;
+ 
+  if (operador === "+")  resultado = n1 + n2;
+  if (operador === "−")  resultado = n1 - n2;
+  if (operador === "×")  resultado = n1 * n2;
+  if (operador === "÷") {
+    if (n2 === 0) {
+      visor = "Erro";
+      atualizarVisor();
+      return;
+    }
+    resultado = n1 / n2;
   }
  
-  const resultado = valores.n1 / valores.n2;
-  resultadoEl.textContent = "Resultado: " + resultado;
-});
+  visor = String(parseFloat(resultado.toFixed(10)));
+  atualizarVisor();
+}
+ 

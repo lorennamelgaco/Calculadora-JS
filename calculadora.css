@@ -18,88 +18,77 @@ body {
 #calculadora {
   background: #161616;
   border: 1px solid #2a2a2a;
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  width: 320px;
+  border-radius: 24px;
+  padding: 1.5rem;
+  width: 300px;
 }
  
 h2 {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #555;
-  margin-bottom: 1.8rem;
-}
- 
-input[type="number"] {
-  width: 100%;
-  background: #0d0d0d;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
-  color: #f0f0f0;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1.1rem;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.75rem;
-  outline: none;
-  transition: border-color 0.2s;
-  appearance: textfield;
-}
- 
-input[type="number"]:focus {
-  border-color: #f97316;
-}
- 
-input[type="number"]::placeholder {
-  color: #3a3a3a;
-}
- 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
- 
-#botoes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  margin-top: 1.2rem;
-  margin-bottom: 1.4rem;
-}
- 
-button {
-  background: #1f1f1f;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
-  color: #f0f0f0;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1.4rem;
-  padding: 0.8rem;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, transform 0.1s;
-}
- 
-button:hover {
-  background: #f97316;
-  border-color: #f97316;
-  color: #fff;
-}
- 
-button:active {
-  transform: scale(0.96);
+  color: #444;
+  margin-bottom: 1rem;
+  text-align: center;
 }
  
 #resultado {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 1.1rem;
-  color: #f97316;
-  background: #0d0d0d;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  min-height: 3rem;
-  display: flex;
-  align-items: center;
+  font-size: 2.4rem;
+  color: #f0f0f0;
+  text-align: right;
+  padding: 0.5rem 0.5rem 1rem;
+  min-height: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
  
+#botoes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+ 
+button {
+  background: #1f1f1f;
+  border: none;
+  border-radius: 50%;
+  color: #f0f0f0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+ 
+button:hover  { filter: brightness(1.4); }
+button:active { transform: scale(0.93); }
+ 
+.btn-clear,
+.btn-op:not(.btn-laranja) {
+  background: #333;
+  color: #f0f0f0;
+}
+ 
+.btn-laranja {
+  background: #f97316;
+  color: #fff;
+}
+ 
+.btn-zero {
+  grid-column: span 2;
+  border-radius: 999px;
+  text-align: left;
+  padding-left: 1.4rem;
+  aspect-ratio: unset;
+}
+ 
+.btn-igual {
+  background: #f97316;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}

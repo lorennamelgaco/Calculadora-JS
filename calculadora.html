@@ -1,26 +1,40 @@
-<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Calculadora</title>
-  <link rel="stylesheet" href="calculadora.css">
+  
 </head>
 <body>
  
   <div id="calculadora">
     <h2>Calculadora</h2>
  
-    <input type="number" id="num1" placeholder="Número 1">
-    <input type="number" id="num2" placeholder="Número 2">
+    <p id="resultado">0</p>
  
     <div id="botoes">
-      <button id="somar">+</button>
-      <button id="subtrair">−</button>
-      <button id="multiplicar">×</button>
-      <button id="dividir">÷</button>
-    </div>
+      <button class="btn-clear" id="limpar">C</button>
+      <button class="btn-op" data-op="+/-">+/-</button>
+      <button class="btn-op" data-op="%">%</button>
+      <button class="btn-op btn-laranja" data-op="÷">÷</button>
  
-    <p id="resultado"></p>
+      <button class="btn-num" data-num="7">7</button>
+      <button class="btn-num" data-num="8">8</button>
+      <button class="btn-num" data-num="9">9</button>
+      <button class="btn-op btn-laranja" data-op="×">×</button>
+ 
+      <button class="btn-num" data-num="4">4</button>
+      <button class="btn-num" data-num="5">5</button>
+      <button class="btn-num" data-num="6">6</button>
+      <button class="btn-op btn-laranja" data-op="−">−</button>
+ 
+      <button class="btn-num" data-num="1">1</button>
+      <button class="btn-num" data-num="2">2</button>
+      <button class="btn-num" data-num="3">3</button>
+      <button class="btn-op btn-laranja" data-op="+">+</button>
+ 
+      <button class="btn-num btn-zero" data-num="0">0</button>
+      <button class="btn-num" data-num=".">.</button>
+      <button class="btn-igual" id="igual">=</button>
+    </div>
   </div>
  
   <script src="calculadora.js"></script>
